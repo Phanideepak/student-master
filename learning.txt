@@ -1,0 +1,3 @@
+Learning resource: youtube.com/watch?v=aCwsQ0vUEk0
+
+Setting up the Flask_APP env command: export Flask_APP = "folder-path"

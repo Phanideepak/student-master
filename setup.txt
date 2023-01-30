@@ -1,3 +1,8 @@
-1.) Install python.
-2.) Create virtual env: python -m venv env
-3)
+1.)  Install python.
+2.)  Create virtual env: python -m venv env
+3)   Activate virtual env: "env/Scripts/activate.bat"
+4.)  pip3 install flask
+5.)  pip3 install flask_restx
+6.)  pip3 freeze > requirements.txt
+7.)  Setting up the Flask_APP env command: export Flask_APP = "folder-path"
+8.)
