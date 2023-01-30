@@ -14,7 +14,10 @@ class UserDto:
         'email': fields.String(attribute = 'email', description = 'user email id', required=True),
         'password': fields.String(attribute = 'pwd',description = 'user password', required = True),        
     })
-    
+    login_request_dto = api.model('user',{
+        'email': fields.String(attribute = 'email', description = 'user email id', required=True),
+        'password': fields.String(attribute = 'pwd',description = 'user password', required = True),
+    })
     
     """
      id = adminDB.Column(adminDB.Integer, primary_key = True)
