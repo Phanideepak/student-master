@@ -5,7 +5,7 @@ class Config:
     SECRET_KEY = config('SECRET_KEY','secret')
     
 class DevelopmentConfig(Config):
-    DEBUG = config('DEBUG',cast = bool)
+    DEBUG = config('DEBUG', cast = bool)
     
 class QAConfig(Config):
     pass
