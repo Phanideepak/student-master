@@ -1,0 +1,5 @@
+Learning resource: youtube.com/watch?v=aCwsQ0vUEk0
+
+Windows:
+
+Setting up the Flask_APP env command: set Flask_APP = "folder-path"
