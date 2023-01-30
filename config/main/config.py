@@ -8,6 +8,10 @@ class DevelopmentConfig(Config):
     DEBUG = config('DEBUG', cast = bool)
     SQLALCHEMY_ECHO =True
     SQLALCHEMY_DATABASE_URI = 'mysql://root:Phani@dev@127.0.0.1/admin'
+    SQLALCHEMY_BINDS = {
+    'my_sql1': 'mysql://root:password@localhost/quickhowto',
+    'my_sql2': 'mysql://root:password@externalserver.domain.com/quickhowto2'
+}
     
 class QAConfig(Config):
     pass
