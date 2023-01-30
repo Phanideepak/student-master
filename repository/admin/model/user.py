@@ -11,4 +11,8 @@ class User(adminDB.Model):
      is_active = adminDB.Column(adminDB.Boolean(), default = True)
      
      def __repr__(self):
-          return f"User : {self.username}"    
+          return f"User : {self.username}"
+      
+     def save(self):
+          adminDB.session.add(self)
+          adminDB.session.commit()   

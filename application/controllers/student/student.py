@@ -1,6 +1,8 @@
 from flask_restx import Namespace,Resource
+from api.dto.dto import StudentDto
 
-student_name_space = Namespace('student', description ='Namespace for student apis')
+
+student_name_space = StudentDto.api
 
 @student_name_space.route("")
 class StudentApi(Resource):
