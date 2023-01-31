@@ -24,6 +24,14 @@ class StudentDto:
     student = api.model('student',{
         'name': fields.String(attribute = 'name', description = 'student name',required=True)
     })
+class DegreeDto:
+    api = Namespace('degree', description='Namespace for degree apis')
+    add_degree_request = api.model('degree',{
+        'name': fields.String(attribute = 'name', description = 'degree name', required=True),
+        'description': fields.String(attribute = 'description', description = 'degree description', required=True),
+        'duration': fields.Integer(attribute = 'duration', description = 'duration', required=True),
+        'single': fields.Boolean(attribute='single', description= 'single or dual degree', required=True)
+    })
 
 class UserDto:
     api = Namespace('auth', description ='Namespace for authentication')
@@ -37,12 +45,3 @@ class UserDto:
         'email': fields.String(attribute = 'email', description = 'user email id', required=True),
         'password': fields.String(attribute = 'pwd',description = 'user password', required = True),
     })
-    
-    """
-     id = adminDB.Column(adminDB.Integer, primary_key = True)
-     username = adminDB.Column(adminDB.String(45), unique = True, nullable = False)
-     email = adminDB.Column(adminDB.String(50), unique = True, nullable = False)
-     password_hash = adminDB.Column(adminDB.Text(), nullable = False)
-     is_admin = adminDB.Column(adminDB.Boolean(), default = False)
-     is_active = adminDB.Column(adminDB.Boolean(), default = True)
-    """

@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from ..utils.validation_utils import ValidationUtils
-from ..utils.validation_utils import ValidationUtils
 from ..services.dept_service import DeptService
 
 class DeptExecutor:

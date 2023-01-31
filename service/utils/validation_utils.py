@@ -7,6 +7,13 @@ def noneMessage(field):
 
 def zeroMessage(field):
     return f"{field} cannot be zero"
+
+def isLessThan(field,threshold):
+    return f"{field} cannot be less than {threshold}"
+
+def isGreaterThan(field,threshold):
+    return f"{field} cannot be greater than {threshold}"
+
     
 class ValidationUtils():
     def isEmpty(value : str, field: str):

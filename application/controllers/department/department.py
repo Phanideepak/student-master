@@ -6,7 +6,7 @@ from service.executor.dept_executor import DeptExecutor
 department_namespace = DepartmentDto.api
 
 @department_namespace.route("")
-class addDepartment(Resource):
+class addorUpdateDepartment(Resource):
     @department_namespace.expect(DepartmentDto.add_department_request, validate = True)
     def post(self):
         return DeptExecutor.addDepartment(request.get_json())
