@@ -1,6 +1,6 @@
 from http import HTTPStatus
-from repository.students.model.student import UniversityDegree
-from repository.students.service.student_repo_service import DegreeRepoService
+from repository.students.model.student import UniversityDegree,DepartmentDegreeMapping
+from repository.students.service.student_repo_service import DegreeRepoService,DepartmentRepoService, DepartmentDegreeMappingRepoService
 
 class DegreeService:
     def addDegree(request):
@@ -38,3 +38,18 @@ class DegreeService:
         
         return  {'message':'updated successfully'}, HTTPStatus.OK    
         
+    def associateDept(request):
+        degree = DegreeRepoService.getById(request.get('degree_id'))
+        if degree is None:
+            return {'message': f"degree with id : f{request.get('id')} not found"}
+        
+        department = DepartmentRepoService.getById(request.get('dept_id'))
+        if department is None:
+            return {'message': f"department with id : f{request.get('dept_id')} not found"}
+        
+        mapping = DepartmentDegreeMappingRepoService.getByDeptIdAndDegreeId(request.get('dept_id'),request.get('degree_id'))
+        if mapping is None:
+            DepartmentDegreeMappingRepoService.saveDepartmentDegreeMapping(DepartmentDegreeMapping(dept_id=request.get('dept_id'),degree_id=request.get('degree_id')))
+        
+        return {'message':'associated successfully'}, HTTPStatus.OK
+            

@@ -38,6 +38,10 @@ class DegreeDto:
         'description': fields.String(attribute = 'description', description = 'degree description', required=True),
         'duration': fields.Integer(attribute = 'duration', description = 'duration', required=True),
         'single': fields.Boolean(attribute='single', description= 'single or dual degree', required=True)
+    }),
+    associate_dept_degree_request = api.model('associate_dept_degree_request',{
+        'dept_id': fields.Integer(attribute ='dept_id', description = 'department id',required=True),
+        'degree_id': fields.Integer(attribute = 'degree_id',description = 'degree_id',required=True)
     })
 
 class UserDto:

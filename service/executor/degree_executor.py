@@ -25,4 +25,14 @@ class DegreeExecutor:
             return {'message': str(e)}, HTTPStatus.BAD_REQUEST
         
        return DegreeService.updateDegree(request)
+   
+    def associateDepartment(request):
+        try:
+            ValidationUtils.isZero(request.get('dept_id'),'dept_id')
+            ValidationUtils.isZero(request.get('degree_id'),'degree_id')
+        except Exception as e:
+            return {'message':str(e)},HTTPStatus.BAD_REQUEST
+        
+        return DegreeService.associateDept(request)
+       
               

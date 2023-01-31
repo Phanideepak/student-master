@@ -6,7 +6,7 @@ from service.executor.degree_executor import DegreeExecutor
 degree_namespace = DegreeDto.api
 
 @degree_namespace.route("")
-class addorUpdateDegree(Resource):
+class AddorUpdateDegree(Resource):
     
     @degree_namespace.expect(DegreeDto.add_degree_request,validate=True)
     def post(self):
@@ -15,3 +15,10 @@ class addorUpdateDegree(Resource):
     @degree_namespace.expect(DegreeDto.update_degree_request)
     def put(self):
         return DegreeExecutor.updateDegree(request.get_json())
+    
+@degree_namespace.route("/department/association")
+class AssociateDepartment(Resource):
+    
+    @degree_namespace.expect(DegreeDto.associate_dept_degree_request,validate=True)
+    def post(self):
+        return DegreeExecutor.associateDepartment(request.get_json())
