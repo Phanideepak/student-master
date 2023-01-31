@@ -1,5 +1,24 @@
 from flask_restx import Namespace,fields
 
+class DepartmentDto:
+    api = Namespace('department',description= 'Namespace for department apis')
+    hod_details = api.model('hod_details',{
+        'name' : fields.String(attribute = 'name', description = 'hod name', required=True),
+        'email': fields.String(attribute = 'email', description = 'hod email', required=True),
+        'phone' : fields.String(attribute = 'phone', description = 'hod contact', required=True) 
+    })
+    add_department_request = api.model('department',{
+        'name': fields.String(attribute = 'name', description = 'department name', required=True),
+        'description': fields.String(attribute = 'description', description = 'department description', required=True),
+        'hod_details': fields.Nested(hod_details,required=True)        
+    })
+    update_department_request = api.model('department',{
+        'department_id': fields.Integer(attribute = 'id', description = 'department id', required=True),
+        'name': fields.String(attribute = 'name', description = 'department name', required=True),
+        'description': fields.String(attribute = 'description', description = 'department description', required=True),
+        'hod_details': fields.Nested(hod_details,required=True) 
+    })
+
 class StudentDto:
     api = Namespace('student', description ='Namespace for student apis')
     student = api.model('student',{

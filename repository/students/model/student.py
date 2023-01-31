@@ -13,7 +13,12 @@ class Student(adminDB.Model):
         joining_year = adminDB.Column(adminDB.Date(), nullable = False)
         graduated_date = adminDB.Column(adminDB.Date())
         created_at = adminDB.Column(adminDB.DateTime(), default = datetime.utcnow)
-        updated_at = adminDB.Column(adminDB.DateTime(), onupdate = datetime.utcnow)
+        updated_at = adminDB.Column(adminDB.DateTime(), onupdate = datetime.utcnow,default = datetime.utcnow)
+        
+                  
+        def save(self):
+              adminDB.session.add(self)
+              adminDB.session.commit()  
  
 class UniversityDegree(adminDB.Model):
       __bind_key__ = 'students_mysql'
@@ -24,10 +29,14 @@ class UniversityDegree(adminDB.Model):
       duration = adminDB.Column(adminDB.Integer, nullable = False)
       is_single = adminDB.Column(adminDB.Boolean(), default = True)
       created_at = adminDB.Column(adminDB.DateTime(), default = datetime.utcnow)
-      updated_at = adminDB.Column(adminDB.DateTime(), onupdate = datetime.utcnow)
+      updated_at = adminDB.Column(adminDB.DateTime(), onupdate = datetime.utcnow, default = datetime.utcnow)
       
-      students = adminDB.relationship('Student',backref = 'degree_id',lazy = True)
-      dept_degree_mappings = adminDB.relationship('DepartmentDegreeMapping',backref = 'degree_id', lazy = True)   
+      students = adminDB.relationship('Student', backref = 'university_degree',lazy = True)
+      dept_degree_mappings = adminDB.relationship('DepartmentDegreeMapping',backref = 'university_degree', lazy = True)
+      
+      def save(self):
+          adminDB.session.add(self)
+          adminDB.session.commit()    
            
 
 class  Department(adminDB.Model):
@@ -40,9 +49,13 @@ class  Department(adminDB.Model):
           email = adminDB.Column(adminDB.String(40), nullable = False)
           phone = adminDB.Column(adminDB.String(200), nullable = False)
           created_at = adminDB.Column(adminDB.DateTime(), default = datetime.utcnow)
-          updated_at = adminDB.Column(adminDB.DateTime(), onupdate = datetime.utcnow)
+          updated_at = adminDB.Column(adminDB.DateTime(), onupdate = datetime.utcnow, default = datetime.utcnow)
           
-          dept_degree_mappings = adminDB.relationship('DepartmentDegreeMapping',backref = 'dept_id', lazy = True)   
+          dept_degree_mappings = adminDB.relationship('DepartmentDegreeMapping',backref = 'department', lazy = True)
+          
+          def save(self):
+              adminDB.session.add(self)
+              adminDB.session.commit()    
 
 class DepartmentDegreeMapping(adminDB.Model):
           __bind_key__ = 'students_mysql'
@@ -51,6 +64,10 @@ class DepartmentDegreeMapping(adminDB.Model):
           dept_id = adminDB.Column(adminDB.Integer,adminDB.ForeignKey('department.id'), nullable = False)
           degree_id = adminDB.Column(adminDB.Integer,adminDB.ForeignKey('university_degree.id'), nullable = False)
           created_at = adminDB.Column(adminDB.DateTime(), default = datetime.utcnow)
-          updated_at = adminDB.Column(adminDB.DateTime(), onupdate = datetime.utcnow)
+          updated_at = adminDB.Column(adminDB.DateTime(), onupdate = datetime.utcnow, default = datetime.utcnow)
           is_active =  adminDB.Column(adminDB.Boolean(), default = True)
           
+          
+          def save(self):
+              adminDB.session.add(self)
+              adminDB.session.commit()  
