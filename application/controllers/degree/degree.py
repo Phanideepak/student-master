@@ -7,3 +7,11 @@ degree_namespace = DegreeDto.api
 
 @degree_namespace.route("")
 class addorUpdateDegree(Resource):
+    
+    @degree_namespace.expect(DegreeDto.add_degree_request,validate=True)
+    def post(self):
+        return DegreeExecutor.addDegree(request.get_json())
+    
+    @degree_namespace.expect(DegreeDto.update_degree_request)
+    def put(self):
+        return DegreeExecutor.updateDegree(request.get_json())

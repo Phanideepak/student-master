@@ -26,7 +26,14 @@ class StudentDto:
     })
 class DegreeDto:
     api = Namespace('degree', description='Namespace for degree apis')
-    add_degree_request = api.model('degree',{
+    add_degree_request = api.model('add_degree_request',{
+        'name': fields.String(attribute = 'name', description = 'degree name', required=True),
+        'description': fields.String(attribute = 'description', description = 'degree description', required=True),
+        'duration': fields.Integer(attribute = 'duration', description = 'duration', required=True),
+        'single': fields.Boolean(attribute='single', description= 'single or dual degree', required=True)
+    })
+    update_degree_request = api.model('update_degree_request',{
+        'id': fields.Integer(attribute='id', description= 'degree id', required=True),
         'name': fields.String(attribute = 'name', description = 'degree name', required=True),
         'description': fields.String(attribute = 'description', description = 'degree description', required=True),
         'duration': fields.Integer(attribute = 'duration', description = 'duration', required=True),

@@ -5,10 +5,10 @@ class Student(adminDB.Model):
         __bind_key__ = 'students_mysql'
         __tablename__ = 'student'       
         id = adminDB.Column(adminDB.Integer, primary_key = True)
-        student_id = adminDB.Column(adminDB.String(40), nullable = False)
+        student_id = adminDB.Column(adminDB.String(40), nullable = False, unique=True)
         first_name  = adminDB.Column(adminDB.String(40), nullable = False)
         last_name = adminDB.Column(adminDB.String(40), nullable = False)
-        email = adminDB.Column(adminDB.String(40), nullable = False)
+        email = adminDB.Column(adminDB.String(40), nullable = False, unique=True)
         degree_id = adminDB.Column(adminDB.Integer,adminDB.ForeignKey('university_degree.id'), nullable = False)
         joining_year = adminDB.Column(adminDB.Date(), nullable = False)
         graduated_date = adminDB.Column(adminDB.Date())
@@ -24,8 +24,8 @@ class UniversityDegree(adminDB.Model):
       __bind_key__ = 'students_mysql'
       __tablename__ = 'university_degree'
       id = adminDB.Column(adminDB.Integer, primary_key = True)
-      name  = adminDB.Column(adminDB.String(40), nullable = False)
-      description = adminDB.Column(adminDB.String(200), nullable = False)
+      name  = adminDB.Column(adminDB.String(40), nullable = False, unique=True)
+      description = adminDB.Column(adminDB.String(200), nullable = False, unique=True)
       duration = adminDB.Column(adminDB.Integer, nullable = False)
       is_single = adminDB.Column(adminDB.Boolean(), default = True)
       created_at = adminDB.Column(adminDB.DateTime(), default = datetime.utcnow)
@@ -43,10 +43,10 @@ class  Department(adminDB.Model):
           __bind_key__ = 'students_mysql'
           __tablename__ = 'department'
           id = adminDB.Column(adminDB.Integer, primary_key = True)
-          name  = adminDB.Column(adminDB.String(60), nullable = False)
-          description = adminDB.Column(adminDB.String(200), nullable = False)
+          name  = adminDB.Column(adminDB.String(60), nullable = False, unique=True)
+          description = adminDB.Column(adminDB.String(200), nullable = False, unique=True)
           hod = adminDB.Column(adminDB.String(40), nullable = False)
-          email = adminDB.Column(adminDB.String(40), nullable = False)
+          email = adminDB.Column(adminDB.String(40), nullable = False, unique=True)
           phone = adminDB.Column(adminDB.String(200), nullable = False)
           created_at = adminDB.Column(adminDB.DateTime(), default = datetime.utcnow)
           updated_at = adminDB.Column(adminDB.DateTime(), onupdate = datetime.utcnow, default = datetime.utcnow)

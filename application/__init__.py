@@ -18,7 +18,7 @@ def create_app(config=config_dict['dev']):
     api.add_namespace(auth_name_space, path= "/auth")
     api.add_namespace(student_name_space, path="/student")
     api.add_namespace(department_namespace, path= "/department")
-    api.add_namespace(degree_namespace,path='degree')
+    api.add_namespace(degree_namespace,path='/degree')
     jwt = JWTManager(app)
     
     @app.shell_context_processor
