@@ -13,8 +13,8 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_ECHO =True
     SQLALCHEMY_DATABASE_URI = 'mysql://root:@127.0.0.1/admin?password=Phani@dev'
     SQLALCHEMY_BINDS = {
-    'my_sql1': 'mysql://root:password@localhost/quickhowto',
-    'my_sql2': 'mysql://root:password@externalserver.domain.com/quickhowto2'
+    'admin_mysql': 'mysql://root:@127.0.0.1/admin?password=Phani@dev',
+    'students_mysql': 'mysql://root:@127.0.0.1/students?password=Phani@dev'
 }
     
 class QAConfig(Config):
