@@ -23,7 +23,8 @@ class StudentDto:
     api = Namespace('student', description ='Namespace for student apis')
     add_student_request = api.model('add_student_request',{
         'fname': fields.String(attribute = 'fname', description = 'student fname',required=True),
-        'lname': fields.String(attribute = 'fname', description = 'student fname',required=True),
+        'lname': fields.String(attribute = 'lname', description = 'student lname',required=True),
+        'student_id': fields.String(attribute='student_id', description='student id',required=True),
         'email': fields.String(attribute = 'email', description = 'student email', required=True),
         'degree_id': fields.Integer(attribute = 'degree_id', description =' student degree identifier', required=True),
         'joining_date': fields.Date(attribute = 'joining_date', required=True) 
