@@ -2,6 +2,7 @@ from ... import adminDB
 from enum import Enum
 
 class User(adminDB.Model):
+     __bind_key__ = 'admin_mysql'
      __tablename__ = 'users'
      id = adminDB.Column(adminDB.Integer, primary_key = True)
      username = adminDB.Column(adminDB.String(45), unique = True, nullable = False)
