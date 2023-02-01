@@ -54,7 +54,7 @@ create table students.student(
    last_name varchar(40) not null,
    email varchar(40) not null unique,
    degree_id int not null,
-   joining_year date not null,
+   joining_date date not null,
    graduated_date date,
    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
    updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

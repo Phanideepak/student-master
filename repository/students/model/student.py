@@ -10,7 +10,7 @@ class Student(adminDB.Model):
         last_name = adminDB.Column(adminDB.String(40), nullable = False)
         email = adminDB.Column(adminDB.String(40), nullable = False, unique=True)
         degree_id = adminDB.Column(adminDB.Integer,adminDB.ForeignKey('university_degree.id'), nullable = False)
-        joining_year = adminDB.Column(adminDB.Date(), nullable = False)
+        joining_date = adminDB.Column(adminDB.Date(), nullable = False)
         graduated_date = adminDB.Column(adminDB.Date())
         created_at = adminDB.Column(adminDB.DateTime(), default = datetime.utcnow)
         updated_at = adminDB.Column(adminDB.DateTime(), onupdate = datetime.utcnow,default = datetime.utcnow)

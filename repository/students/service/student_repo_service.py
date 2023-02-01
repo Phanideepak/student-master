@@ -1,5 +1,16 @@
 from ..model.student import Student,Department,UniversityDegree,DepartmentDegreeMapping
 
+
+class StudentRepoService:
+    def saveStudent(student):
+        student.save()
+        
+    def getById(id):
+        return Student.query.filter_by(id = id).first()
+    
+    def getByStudentId(student_id):
+        return Student.query.filter_by(student_id = student_id).first()
+
 class DepartmentRepoService:
     def saveDepartment(department : Department):
         department.save()

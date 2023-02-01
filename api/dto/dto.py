@@ -21,9 +21,23 @@ class DepartmentDto:
 
 class StudentDto:
     api = Namespace('student', description ='Namespace for student apis')
-    student = api.model('student',{
-        'name': fields.String(attribute = 'name', description = 'student name',required=True)
+    add_student_request = api.model('add_student_request',{
+        'fname': fields.String(attribute = 'fname', description = 'student fname',required=True),
+        'lname': fields.String(attribute = 'fname', description = 'student fname',required=True),
+        'email': fields.String(attribute = 'email', description = 'student email', required=True),
+        'degree_id': fields.Integer(attribute = 'degree_id', description =' student degree identifier', required=True),
+        'joining_date': fields.Date(attribute = 'joining_date', required=True) 
     })
+    
+    update_student_request = api.model('update_student_request',{
+        'id' : fields.String(attribute = 'id',description = 'student id',required=True),
+        'fname': fields.String(attribute = 'fname', description = 'student fname',required=True),
+        'lname': fields.String(attribute = 'fname', description = 'student fname',required=True),
+        'email': fields.String(attribute = 'email', description = 'student email', required=True),
+        'degree_id': fields.Integer(attribute = 'degree_id', description =' student degree identifier', required=True),
+        'joining_year': fields.Date(attribute = 'joining_year', required=True) 
+    })
+    
 class DegreeDto:
     api = Namespace('degree', description='Namespace for degree apis')
     add_degree_request = api.model('add_degree_request',{
@@ -38,7 +52,7 @@ class DegreeDto:
         'description': fields.String(attribute = 'description', description = 'degree description', required=True),
         'duration': fields.Integer(attribute = 'duration', description = 'duration', required=True),
         'single': fields.Boolean(attribute='single', description= 'single or dual degree', required=True)
-    }),
+    })
     associate_dept_degree_request = api.model('associate_dept_degree_request',{
         'dept_id': fields.Integer(attribute ='dept_id', description = 'department id',required=True),
         'degree_id': fields.Integer(attribute = 'degree_id',description = 'degree_id',required=True)
