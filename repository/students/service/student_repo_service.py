@@ -10,6 +10,9 @@ class StudentRepoService:
     
     def getByStudentId(student_id):
         return Student.query.filter_by(student_id = student_id).first()
+    
+    def getLatestStudentCountByDeptId(dept_id):
+        return Student.query.filter_by(dept_id=dept_id).count()
 
 class DepartmentRepoService:
     def saveDepartment(department : Department):

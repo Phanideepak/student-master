@@ -8,9 +8,10 @@ class StudentExecutor:
       try:   
             ValidationUtils.isEmpty(request.get('fname'),'fname')
             ValidationUtils.isEmpty(request.get('lname'),'lname')
+            ValidationUtils.isEmpty(request.get('student_id'),'student_id')
             ValidationUtils.isEmpty(request.get('email'),'email')
             ValidationUtils.isZero(request.get('degree_id'),'degree_id')
-            ValidationUtils.isNone(request.get('joining_year'),'joining_year')
+            ValidationUtils.isNone(request.get('joining_date'),'joining_date')
       except Exception as e:
           return {'message': str(e)}, HTTPStatus.BAD_REQUEST
       
@@ -20,10 +21,10 @@ class StudentExecutor:
         try:
             ValidationUtils.isEmpty(request.get('fname'),'fname')
             ValidationUtils.isEmpty(request.get('lname'),'lname')
-            ValidationUtils.isEmpty(request.get('student_id'),'student_id')
+            ValidationUtils.isEmpty(request.get('id'),'student_id')
             ValidationUtils.isEmpty(request.get('email'),'email')
             ValidationUtils.isZero(request.get('degree_id'),'degree_id')
-            ValidationUtils.isNone(request.get('joining_year'),'joining_year')
+            ValidationUtils.isNone(request.get('joining_date'),'joining_date')
         except Exception as e:
                 return {'message': str(e)}, HTTPStatus.BAD_REQUEST
         
