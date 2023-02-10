@@ -1,7 +1,7 @@
 from http import HTTPStatus
 from ..utils.validation_utils import ValidationUtils
 from ..services.student_service import StudentService
-
+import json
 
 class StudentExecutor:
     def addStudent(request):
@@ -28,3 +28,6 @@ class StudentExecutor:
                 return {'message': str(e)}, HTTPStatus.BAD_REQUEST
         
         return StudentService.updateStudent(request)
+    
+    def getallStudents():   
+        return {'data': StudentService.getAllStudents()}

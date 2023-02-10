@@ -1,5 +1,6 @@
 from repository.students.service.student_repo_service import StudentRepoService
 from repository.students.model.student import Student
+from http import HTTPStatus
 
 class StudentService:
     def addStudent(request):
@@ -20,3 +21,13 @@ class StudentService:
         
     def updateStudent(request):
         pass
+    
+    def getAllStudents():
+        studentModelList = StudentRepoService.getAll()
+        if not studentModelList:
+            return [], HTTPStatus.NOT_FOUND
+        studentDtoList=[]
+        for model in studentModelList:
+            studentDtoList.append(model.serialize())
+        return studentDtoList, HTTPStatus.OK
+        

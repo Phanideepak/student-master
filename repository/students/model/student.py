@@ -1,7 +1,8 @@
 from ... import adminDB
 from datetime import datetime
+from sqlalchemy_serializer import SerializerMixin
 
-class Student(adminDB.Model):
+class Student(adminDB.Model, SerializerMixin):
         __bind_key__ = 'students_mysql'
         __tablename__ = 'student'       
         id = adminDB.Column(adminDB.Integer, primary_key = True)
@@ -15,10 +16,19 @@ class Student(adminDB.Model):
         created_at = adminDB.Column(adminDB.DateTime(), default = datetime.utcnow)
         updated_at = adminDB.Column(adminDB.DateTime(), onupdate = datetime.utcnow,default = datetime.utcnow)
         
-                  
+        def __init__(self, id, student_id, fname, lname, email):
+            self.id =id
+            self.student_id = student_id
+            self.first_name = fname
+            self.last_name = lname
+            self.email = email
+                      
         def save(self):
               adminDB.session.add(self)
-              adminDB.session.commit()  
+              adminDB.session.commit()
+              
+        def serialize(self):
+            return {'id':self.id, 'student_id':self.student_id, 'fname':self.first_name,'lname':self.last_name, 'email':self.email}        
  
 class UniversityDegree(adminDB.Model):
       __bind_key__ = 'students_mysql'

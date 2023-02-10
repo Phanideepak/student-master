@@ -43,8 +43,9 @@ class StudentOperationsById(Resource):
 
 @student_name_space.route("/all")
 class FetchStudentLists(Resource):
-    def get(self, active):
+    def get(self):
        """
        Get all students
        """ 
-       pass
+       return StudentExecutor.getallStudents()
+       

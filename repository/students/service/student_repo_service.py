@@ -8,6 +8,9 @@ class StudentRepoService:
     def getById(id):
         return Student.query.filter_by(id = id).first()
     
+    def getAll():
+        return Student.query.all()
+    
     def getByStudentId(student_id):
         return Student.query.filter_by(student_id = student_id).first()
 
